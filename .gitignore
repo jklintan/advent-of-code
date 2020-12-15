@@ -1,5 +1,7 @@
 # Don't add VS-files
 *.vcxproj
+*.vcxproj.filters
+*.vcxproj.user
 
 # Debug folder
 2020/Debug/
