@@ -1,6 +1,24 @@
 #ifndef DAY1
 #define DAY1
 
+list<int> processInputNumbers(string name) {
+    ifstream inputFile;
+    inputFile.open(name, ios::in);
+
+    list<int> processed;
+    int numb;
+
+    if (inputFile.is_open()) {
+        string w;
+        while (getline(inputFile, w)) {
+            processed.push_back(stoi(w));
+        }
+        inputFile.close(); //close the file object.
+    }
+
+    return processed;
+}
+
 // Calculate the product of the sum of two terms that adds up to input specific number, if existing in input
 int productOfSum2(list<int> l, int sum) {
 
