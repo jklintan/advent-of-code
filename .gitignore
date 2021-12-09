@@ -13,5 +13,5 @@ __pycache__/
 .mypy_cache/
 
 # Rust specific
-*/target
+target/
 Cargo.lock
