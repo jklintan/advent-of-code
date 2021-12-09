@@ -26,15 +26,14 @@ fn main() {
 
                 // Parse each line and split by chars
                 let vec: Vec<&str> = ip.split(" -> ").collect();
-                let first: Vec<&str> = vec[0].split(",").collect();
-                let num2 = vec[1].split(",");
-                let second: Vec<&str> = num2.collect();
+                let first_coord: Vec<&str> = vec[0].split(",").collect();
+                let second_coord: Vec<&str> = vec[1].split(",").collect();
 
-                // Determine the row start and col start
-                let row_start = first[0].parse::<i32>().unwrap();
-                let row_end = second[0].parse::<i32>().unwrap();
-                let col_start = first[1].parse::<i32>().unwrap();
-                let col_end = second[1].parse::<i32>().unwrap();
+                // Determine the coordinates
+                let row_start = first_coord[0].parse::<i32>().unwrap();
+                let col_start = first_coord[1].parse::<i32>().unwrap();
+                let row_end = second_coord[0].parse::<i32>().unwrap();
+                let col_end = second_coord[1].parse::<i32>().unwrap();
 
                 // Set iteration ranges depending on type of line
                 if col_start == col_end{
@@ -90,8 +89,7 @@ fn main() {
                     if !coordinates.contains_key(&input_key) {
                         coordinates.insert(input_key, 1);
                     } else {
-                        let stat = coordinates.entry(input_key).or_insert(1);
-                        *stat += 1;
+                        *coordinates.entry(input_key).or_insert(0) += 1;
                     };
                 };
                 diagonal = false;
