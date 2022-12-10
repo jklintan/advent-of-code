@@ -16,7 +16,6 @@ def main():
     register_x = []
     with open(file_path, mode='r', encoding='utf-8') as file:
         for line in file:
-            current_cycle = check_row_change(current_cycle, 41)
             current_input = line.strip().split(" ")
             command = current_input[0]
             
@@ -24,7 +23,7 @@ def main():
             if command == "noop":
                 register_x.append(curr_val)
                 crt.append(get_pixel(current_cycle, curr_val))
-                current_cycle += 1
+                current_cycle = check_row_change(current_cycle + 1, 41)
                 continue
             else:  
                 # addx represents two cycles,
@@ -39,8 +38,7 @@ def main():
                 crt.append(get_pixel(current_cycle, curr_val))
                 curr_val += int(current_input[1])
                 register_x.append(curr_val)
-                current_cycle += 1
-
+                current_cycle = check_row_change(current_cycle + 1, 41)
 
     # Part 1
     cycles_to_check = [20, 60, 100, 140, 180, 220]
